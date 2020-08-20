@@ -23,9 +23,9 @@
                   <Pane prefHeight="188.0" prefWidth="405.0" style="-fx-border-color: black;">
                      <children>
                         <Label layoutX="14.0" layoutY="-16.0" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #fefefe;" text="Pick any One" />
-                        <RadioButton fx:id="rdNone" layoutX="30.0" layoutY="30.0" mnemonicParsing="false" text="None" />
-                        <RadioButton fx:id="rdChickenSandwich" layoutX="30.0" layoutY="59.0" mnemonicParsing="false" text="Chicken Sandwich($1.25)" />
-                        <RadioButton fx:id="rdSalmonSandwich" layoutX="30.0" layoutY="88.0" mnemonicParsing="false" text="Salmon Sandwich($1.50)" />
+                        <RadioButton fx:id="rdNone" layoutX="30.0" layoutY="30.0" mnemonicParsing="false" onAction="#rdNone" text="None" />
+                        <RadioButton fx:id="rdChickenSandwich" layoutX="30.0" layoutY="59.0" mnemonicParsing="false" onAction="#rdChickenSandwich" text="Chicken Sandwich($1.25)" />
+                        <RadioButton fx:id="rdSalmonSandwich" layoutX="30.0" layoutY="88.0" mnemonicParsing="false" onAction="#rdSalmonSandwich" text="Salmon Sandwich($1.50)" />
                         <Label layoutX="184.0" layoutY="30.0" prefHeight="17.0" prefWidth="60.0" text="Quantity : " />
                         <TextField fx:id="fieldChicken" layoutX="183.0" layoutY="55.0" prefHeight="17.0" prefWidth="60.0" />
                         <TextField fx:id="fieldSalmon" layoutX="183.0" layoutY="84.0" prefHeight="25.0" prefWidth="60.0" />
@@ -33,18 +33,18 @@
                   </Pane>
                   <Pane prefHeight="188.0" prefWidth="361.0" style="-fx-border-color: black;">
                      <children>
-                        <RadioButton fx:id="rdCoffeeNone" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" text="None">
+                        <RadioButton fx:id="rdCoffeeNone" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" onAction="#rdCoffeeNone" text="None">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="rdRegular" layoutX="14.0" layoutY="59.0" mnemonicParsing="false" text="Regular ($1.25)" />
-                        <RadioButton fx:id="rdCappaccino" layoutX="14.0" layoutY="88.0" mnemonicParsing="false" text="Cappaccino ($2.00)">
+                        <RadioButton fx:id="rdRegular" layoutX="14.0" layoutY="59.0" mnemonicParsing="false" onAction="#rdRegular" text="Regular ($1.25)" />
+                        <RadioButton fx:id="rdCappaccino" layoutX="14.0" layoutY="88.0" mnemonicParsing="false" onAction="#rdCappaccino" text="Cappaccino ($2.00)">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="rdCafeAuLait" layoutX="14.0" layoutY="116.0" mnemonicParsing="false" text="Cafe Au Lait ($1.75)">
+                        <RadioButton fx:id="rdCafeAuLait" layoutX="14.0" layoutY="116.0" mnemonicParsing="false" onAction="#rdCafeAuLait" text="Cafe Au Lait ($1.75)">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -73,7 +73,7 @@
                         <Label layoutX="31.0" layoutY="37.0" text="Subtotal" />
                         <Label fx:id="lbSubtotal" layoutX="132.0" layoutY="37.0" text="\\$0.00" />
                         <Label layoutX="31.0" layoutY="81.0" text="Sales Tax 13%" />
-                        <Label fx:id="lbSaleTax" layoutX="132.0" layoutY="81.0" text="\\$0.00" />
+                        <Label fx:id="lbSalesTax" layoutX="132.0" layoutY="81.0" text="\\$0.00" />
                         <Label layoutX="31.0" layoutY="126.0" text="Total Sale" />
                         <Label fx:id="lbTotalSale" layoutX="132.0" layoutY="126.0" text="\\$0.00" />
                         <Label layoutX="10.0" layoutY="-12.0" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #fefefe;" text="Price Summary" />

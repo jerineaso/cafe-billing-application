@@ -1,10 +1,12 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -19,6 +21,8 @@ public class Controller implements Initializable {
 	private final double regularCoffeePrice = 1.25D;
 	private final double cappuccinoPrice = 2.0D;
 	private final double cafeAuLaitPrice = 1.75D;
+
+	DecimalFormat df = new DecimalFormat("$#,##0.00");
 
 	@FXML
 	private Button btnTotal;
@@ -74,6 +78,62 @@ public class Controller implements Initializable {
 		disablePickSection(true);
 		disableCafeFields(true);
 		checkBoxEnable(true);
+
+		btnTotal.setOnAction(event -> {
+			double pretaxOrderPrice = 0.0D;
+			double salesTax = 0.0D;
+			double totalOrderPrice = 0.0D;
+
+			int chickenCount = parseFieldInteger(fieldChicken.getText());
+			int salmonCount = parseFieldInteger(fieldSalmon.getText());
+			int regularCount = parseFieldInteger(fieldRegular.getText());
+			int cappaccinoCount = parseFieldInteger(fieldCapp.getText());
+			int cafeLaitCount = parseFieldInteger(fieldCafe.getText());
+
+			pretaxOrderPrice = chickenCount * chickenSandwichPrice + salmonCount * salmonSandwichPrice
+					+ regularCount * regularCoffeePrice + cappaccinoCount * cappuccinoPrice
+					+ cafeLaitCount * cafeAuLaitPrice;
+			if (chBlueberry.isSelected()) {
+				pretaxOrderPrice += blueberryJamPrice;
+			}
+			if (chButter.isSelected()) {
+				pretaxOrderPrice += butterPrice;
+			}
+			if (chCreamCheese.isSelected()) {
+				pretaxOrderPrice += creamCheesePrice;
+			}
+			if (chPeach.isSelected()) {
+				pretaxOrderPrice += peachJellyPrice;
+			}
+			if (chRaspberry.isSelected()) {
+				pretaxOrderPrice += raspberryJamPrice;
+			}
+
+			salesTax = pretaxOrderPrice * 0.13D;
+			totalOrderPrice = pretaxOrderPrice + salesTax;
+
+			System.out.println(totalOrderPrice + " " + pretaxOrderPrice + " " + salesTax);
+
+			lbSubtotal.setText(df.format(pretaxOrderPrice));
+			lbSalesTax.setText(df.format(salesTax));
+			lbTotalSale.setText(df.format(totalOrderPrice));
+		});
+
+		btnReset.setOnAction(event -> {
+			double pretaxOrderPrice = 0.0D;
+			double salesTax = 0.0D;
+			double totalOrderPrice = 0.0D;
+			disablePickSection(true);
+			checkBoxEnable(true);
+			disableCafeFields(true);
+			lbSubtotal.setText(df.format(pretaxOrderPrice));
+			lbSalesTax.setText(df.format(salesTax));
+			lbTotalSale.setText(df.format(totalOrderPrice));
+		});
+
+		btnExit.setOnAction(event -> {
+			Platform.exit();
+		});
 	}
 
 	private void checkBoxEnable(boolean b) {
@@ -117,4 +177,100 @@ public class Controller implements Initializable {
 		rdChickenSandwich.setSelected(false);
 		rdSalmonSandwich.setSelected(false);
 	}
+
+	private Integer parseFieldInteger(String value) {
+		Integer converted = 0;
+		try {
+			if (value.trim().length() > 0) {
+				converted = Integer.valueOf(value);
+			}
+		} catch (NumberFormatException e) {
+			converted = -1;
+		} catch (Exception e) {
+			converted = -1;
+		}
+		return converted;
+	}
+
+	@FXML
+	private void rdNone() {
+		Boolean value = rdNone.selectedProperty().get();
+		disablePickSection(value);
+		checkBoxEnable(value);
+		if (value) {
+			rdNone.setSelected(value);
+		}
+
+	}
+
+	@FXML
+	private void rdSalmonSandwich() {
+		Boolean value = rdSalmonSandwich.selectedProperty().get();
+		disablePickSection(value);
+		checkBoxEnable(!value);
+		if (value) {
+			rdSalmonSandwich.setSelected(true);
+			fieldSalmon.setDisable(false);
+			fieldSalmon.setText("1");
+		}
+	}
+
+	@FXML
+	private void rdChickenSandwich() {
+		Boolean value = rdChickenSandwich.selectedProperty().get();
+		disablePickSection(value);
+		checkBoxEnable(!value);
+		if (value) {
+			rdChickenSandwich.setSelected(true);
+			fieldChicken.setDisable(false);
+			fieldChicken.setText("1");
+		}
+	}
+
+	@FXML
+	private void rdCoffeeNone() {
+
+		Boolean value = rdCoffeeNone.selectedProperty().get();
+		disableCafeFields(true);
+		if (value) {
+			rdCoffeeNone.setSelected(value);
+		}
+
+	}
+
+	@FXML
+	private void rdRegular() {
+		Boolean value = rdRegular.selectedProperty().get();
+		disableCafeFields(true);
+		if (value) {
+			rdRegular.setSelected(value);
+			fieldRegular.setDisable(false);
+			fieldRegular.setText("1");
+		}
+
+	}
+
+	@FXML
+	private void rdCappaccino() {
+		Boolean value = rdCappaccino.selectedProperty().get();
+		disableCafeFields(true);
+		if (value) {
+			rdCappaccino.setSelected(value);
+			fieldCapp.setDisable(false);
+			fieldCapp.setText("1");
+		}
+
+	}
+
+	@FXML
+	private void rdCafeAuLait() {
+		Boolean value = rdCafeAuLait.selectedProperty().get();
+		disableCafeFields(true);
+		if (value) {
+			rdCafeAuLait.setSelected(value);
+			fieldCafe.setDisable(false);
+			fieldCafe.setText("1");
+		}
+	}
+
 }
