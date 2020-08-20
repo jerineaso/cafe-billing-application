@@ -4,6 +4,8 @@
 
 # Description
 
+![Cafe-Billing-Application](https://github.com/jerineaso/cafe-billing-application/blob/master/screenshots/cafe-billing-application.jpg)
+
 This project is a beginner level application. The Language we uses is JAVAFX. JavaFX is a set of graphics and media packages that enables developers to design, create, test, debug, and deploy rich client applications that operate consistently across diverse platforms.
 
 In this application we only included some list items in a shop and its calculations.And we can also print the receipt.This receipt section is all included in our .txt file.
