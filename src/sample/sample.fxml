@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <MenuBar>
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Print Receipt" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#printReceipt" text="Print Receipt" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeByMenu" text="Close" />
             </items>
           </Menu>
         </menus>
@@ -71,11 +81,11 @@
                   <Pane prefHeight="163.0" prefWidth="252.0" style="-fx-border-color: black;">
                      <children>
                         <Label layoutX="31.0" layoutY="37.0" text="Subtotal" />
-                        <Label fx:id="lbSubtotal" layoutX="132.0" layoutY="37.0" text="\\$0.00" />
+                        <Label fx:id="lbSubtotal" layoutX="132.0" layoutY="37.0" text="\$0.00" />
                         <Label layoutX="31.0" layoutY="81.0" text="Sales Tax 13%" />
-                        <Label fx:id="lbSalesTax" layoutX="132.0" layoutY="81.0" text="\\$0.00" />
+                        <Label fx:id="lbSalesTax" layoutX="132.0" layoutY="81.0" text="\$0.00" />
                         <Label layoutX="31.0" layoutY="126.0" text="Total Sale" />
-                        <Label fx:id="lbTotalSale" layoutX="132.0" layoutY="126.0" text="\\$0.00" />
+                        <Label fx:id="lbTotalSale" layoutX="132.0" layoutY="126.0" text="\$0.00" />
                         <Label layoutX="10.0" layoutY="-12.0" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #fefefe;" text="Price Summary" />
                      </children>
                   </Pane>
